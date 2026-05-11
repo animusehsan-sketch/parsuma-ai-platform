@@ -21,7 +21,7 @@ graph TD
     subgraph Ingestion_Agent [Document Intelligence Agent]
         Extraction[Text Extraction - PDF/DOCX/TXT]
         Chunking[Recursive Character Chunking]
-        Embeddings[OpenAI Embeddings - text-embedding-3-small]
+        Embeddings[Local Embeddings - all-MiniLM-L6-v2]
         VectorStore[(ChromaDB Vector Store)]
     end
 
@@ -68,7 +68,7 @@ graph TD
 | **Language** | Python 3.10+ | Core logic and agent orchestration |
 | **Frontend** | Streamlit | Reactive dashboard with custom HSL color palette |
 | **LLM** | OpenAI gpt-4o-mini | High-reasoning synthesis engine |
-| **Embeddings** | text-embedding-3-small | 1536-dimensional semantic mapping |
+| **Embeddings** | all-MiniLM-L6-v2 | Local sentence-transformers mapping |
 | **Vector DB** | ChromaDB | Local, persistent vector storage |
 | **Parsing** | PyPDF2 / python-docx | Multi-format text extraction |
 | **Container** | Docker | Production-grade containerization |

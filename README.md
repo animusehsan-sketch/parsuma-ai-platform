@@ -21,7 +21,7 @@ The platform addresses the complex challenge of **Intercultural Digital Publishi
 ## 🌟 Core Features & AI Agent Capabilities
 
 ### ⚡ Neural Intelligence & Retrieval
-- **Advanced Semantic Search**: High-dimensional vector mapping using `text-embedding-3-small`.
+- **Advanced Semantic Search**: High-dimensional vector mapping using the `all-MiniLM-L6-v2` local transformer model.
 - **Dynamic RAG Pipeline**: Real-time context injection with citation tracking and metadata persistence.
 - **Multi-Format Ingestion**: Professional-grade parsing for PDF, DOCX, and TXT with recursive character-boundary awareness.
 
@@ -67,25 +67,29 @@ graph TD
 
 ---
 
-## 🚀 Installation & Deployment
+## 🚀 Installation & Setup
 
 ### 1. Prerequisites
 - Python 3.10 or higher
 - Docker (Optional for containerized deployment)
 - OpenAI API Key
 
-### 2. Local Setup
+### 2. Local Installation
 ```bash
 # Clone the repository
 git clone https://github.com/animusehsan-sketch/parsuma-ai-platform.git
 cd parsuma-ai-platform
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
 ### 3. Environment Configuration
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory (refer to `.env.example`):
 ```bash
 OPENAI_API_KEY=sk-your-key-here
 CHROMA_DB_PATH=./chroma_db
@@ -97,11 +101,41 @@ MODEL_NAME=gpt-4o-mini
 streamlit run app.py
 ```
 
-### 5. Docker Deployment
+---
+
+## 🐳 Deployment & Infrastructure
+
+### **Docker Deployment**
+The platform is fully containerized for consistent deployment across environments.
 ```bash
+# Build the image
 docker build -t parsuma-ai .
+
+# Run the container
 docker run -p 8501:8501 --env-file .env parsuma-ai
 ```
+
+### **Streamlit Cloud Deployment**
+1.  Push the code to a GitHub repository.
+2.  Connect your repository to [Streamlit Cloud](https://share.streamlit.io/).
+3.  In the app settings, add your `.env` variables under **Secrets**:
+    ```toml
+    OPENAI_API_KEY = "sk-..."
+    CHROMA_DB_PATH = "./chroma_db"
+    MODEL_NAME = "gpt-4o-mini"
+    ```
+
+---
+
+## 🛠️ Troubleshooting & FAQ
+
+| Issue | Solution |
+| :--- | :--- |
+| **Missing API Key** | Ensure `OPENAI_API_KEY` is set in `.env` or provided in the sidebar. |
+| **Insufficient Quota** | Verify your OpenAI billing status or switch to a smaller model in `.env`. |
+| **ChromaDB Errors** | Delete the `chroma_db/` folder to reset the vector index. |
+| **Missing Packages** | Run `pip install -r requirements.txt` again to ensure all dependencies are met. |
+| **Torch/CUDA Errors** | The app defaults to CPU. If you have an incompatible GPU, ensure `torch` is installed correctly for your OS. |
 
 ---
 
