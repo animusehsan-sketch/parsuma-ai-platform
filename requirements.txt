@@ -1,0 +1,13 @@
+streamlit
+openai
+sentence-transformers
+chromadb
+PyPDF2
+python-docx
+plotly
+pandas
+python-dotenv
+requests
+numpy
+pydantic
+torch

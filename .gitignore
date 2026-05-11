@@ -1,0 +1,38 @@
+# Environment
+.env
+.env.example
+!.env.example
+
+# Databases
+chroma_db/
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env/
+
+# Streamlit
+.streamlit/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (Avoid committing large datasets)
+data/
+assets/
