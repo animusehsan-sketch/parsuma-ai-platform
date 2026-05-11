@@ -1,110 +1,161 @@
-# ✨ Parsuma AI | Knowledge Intelligence Platform
-> **Production-Grade Multi-Agent RAG System for Intercultural Digital Publishing**
+# 🌌 Parsuma AI | Knowledge Intelligence Platform
+> **A Master’s Level Multi-Agent RAG System for Intercultural Digital Publishing**
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg)](https://streamlit.io/)
-[![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-blue.svg)](https://www.trychroma.com/)
-[![OpenAI](https://img.shields.io/badge/LLM-OpenAI-412991.svg)](https://openai.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
----
-
-## 📖 Overview
-
-**Parsuma AI** is a state-of-the-art Knowledge Intelligence Platform engineered for global digital publishing organizations. It bridges the gap between institutional knowledge and intercultural content strategy through advanced **Retrieval-Augmented Generation (RAG)** and a **decentralized multi-agent architecture**.
-
-Designed as a Master’s Level Applied AI Engineering project, the platform provides a premium, high-fidelity command center for analyzing complex document repositories and generating actionable, grounded insights for international audiences.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![OpenAI](https://img.shields.io/badge/AI-OpenAI%20GPT--4o--mini-412991.svg?logo=openai&logoColor=white)](https://openai.com/)
+[![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-00ADD8.svg?logo=chroma&logoColor=white)](https://www.trychroma.com/)
+[![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com/)
 
 ---
 
-## 🌟 Core Intelligence Features
+## 📋 Project Overview
 
-### 🧠 Advanced RAG Engine
-- **Neural Semantic Retrieval**: Leveraging `all-MiniLM-L6-v2` embeddings for high-precision vector mapping.
-- **Context-Aware Synthesis**: Powered by OpenAI `gpt-4o-mini` for nuanced reasoning and grounded responses.
-- **Dynamic Citations**: Every insight is traced back to source document chunks with confidence scoring.
+**Parsuma AI** is a production-grade Knowledge Intelligence platform engineered as a **Final Project for the Master’s Program in Applied AI Engineering**. 
 
-### 🤖 Multi-Agent Orchestration
-- **Document Intelligence Agent**: Handles ingestion, sentence-boundary-aware chunking, and metadata tagging.
-- **Content Strategy Agent**: Synthesizes knowledge into localized roadmaps for intercultural publishing.
-- **Safety & Ethics Agent**: Real-time evaluation of response grounding and malicious input detection.
+The platform addresses the complex challenge of **Intercultural Digital Publishing** by providing an intelligent orchestration layer between unstructured institutional knowledge and global content strategy. By leveraging state-of-the-art **Retrieval-Augmented Generation (RAG)**, Parsuma AI enables organizations to transform vast document repositories into actionable, localized, and culturally sensitive publishing roadmaps.
+
+---
+
+## 🌟 Key Features & AI Capabilities
+
+### ⚡ Intelligence & Retrieval
+- **Neural Semantic Search**: Utilizes `all-MiniLM-L6-v2` transformers to map documents into a high-dimensional vector space.
+- **Dynamic Context Injection**: Intelligently retrieves relevant knowledge chunks to ground LLM responses in factual data.
+- **Multi-Format Ingestion**: Native support for PDF, DOCX, and TXT files with sentence-boundary-aware chunking.
+
+### 🤖 Multi-Agent Architecture
+The system is built on a decentralized agentic framework:
+- **Document Intelligence Agent**: Automates extraction, cleaning, and vectorization of institutional assets.
+- **AI Research Chat**: A conversational interface for deep-dive exploration of the knowledge base.
+- **Strategy Studio**: Generates intercultural content strategies and localized publishing roadmaps.
+- **Safety & Evaluation Agent**: Monitors outputs for grounding, safety, and hallucination risks.
 
 ### 🎨 Premium User Experience
-- **Glassmorphism UI**: A dark-mode, futuristic dashboard built with Streamlit and custom CSS.
-- **Real-time Telemetry**: Interactive Plotly visualizations for system latency, token usage, and hallucination risks.
+- **Futuristic SaaS Interface**: A dark-mode dashboard with glassmorphism aesthetics.
+- **Live Telemetry**: Real-time tracking of retrieval confidence, response latency, and token consumption.
+- **Responsive Navigation**: 6-page integrated workflow from ingestion to evaluation.
 
 ---
 
-## 🏗️ Technical Architecture
+## 🏗️ RAG Architecture
 
 ```mermaid
 graph TD
-    A[Documents: PDF/Docx/Txt] --> B(Document Agent)
-    B --> C{Chunking & Embedding}
-    C --> D[(ChromaDB Vector Store)]
-    E[User Query] --> F(Retrieval Agent)
-    D --> F
-    F --> G(RAG Pipeline)
-    G --> H(gpt-4o-mini Reasoning)
-    H --> I(Safety Agent Verification)
-    I --> J[Premium UI Dashboard]
+    subgraph "Data Layer"
+        DOCS[Unstructured Docs] --> LOAD[Document Loader]
+        LOAD --> CHUNK[Chunking Engine]
+        CHUNK --> EMBED[Sentence Transformers]
+        EMBED --> VDB[(ChromaDB)]
+    end
+
+    subgraph "Reasoning Layer"
+        QUERY[User Query] --> RET[Retrieval Agent]
+        VDB --> RET
+        RET --> PROMPT[Contextual Prompt Builder]
+        PROMPT --> LLM[OpenAI gpt-4o-mini]
+    end
+
+    subgraph "Safety & UI Layer"
+        LLM --> SAFE[Safety Guard Agent]
+        SAFE --> UI[Premium Streamlit Dashboard]
+        UI --> ANALYTICS[Real-time Analytics]
+    end
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🛠️ Tech Stack
 
-### 🔧 Installation
+- **Core**: Python 3.10+
+- **LLM**: OpenAI GPT-4o-mini / GPT-4
+- **Vector Database**: ChromaDB
+- **Embeddings**: HuggingFace Sentence-Transformers
+- **Frontend**: Streamlit + Custom CSS
+- **Visualization**: Plotly
+- **DevOps**: Docker, GitHub Actions (Ready)
 
-1. **Clone & Navigate**:
-   ```bash
-   git clone <your-repo-url>
-   cd parsuma-ai-platform
-   ```
+---
 
-2. **Environment Setup**:
-   Create a `.env` file from the provided example:
-   ```bash
-   cp .env.example .env
-   ```
-   Edit `.env` and add your `OPENAI_API_KEY`.
+## 🚀 Installation & Setup
 
-3. **Dependency Management**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Prerequisites
+- Python 3.10 or higher
+- An active OpenAI API Key
 
-4. **Launch Platform**:
-   ```bash
-   streamlit run app.py
-   ```
-
-### 🐳 Docker Quickstart
+### 2. Clone the Repository
 ```bash
-docker build -t parsuma-ai .
-docker run -p 8501:8501 --env-file .env parsuma-ai
+git clone https://github.com/animusehsan-sketch/parsuma-ai-platform.git
+cd parsuma-ai-platform
 ```
 
----
-
-## 🛡️ Safety & Responsible AI
-Parsuma AI implements a **Zero-Trust Hallucination Policy**:
-- **Grounding Score**: Every response is evaluated against retrieved context to ensure factual alignment.
-- **Input Sanitization**: Built-in protection against prompt injection and adversarial queries.
-- **Observability**: Complete audit logs of agent reasoning and retrieval paths.
-
----
-
-## 🧪 Quality Assurance
-The platform includes a comprehensive test suite covering retrieval accuracy, prompt integrity, and pipeline robustness.
+### 3. Environment Configuration
+Create a `.env` file in the root directory:
 ```bash
-pytest tests/
+# .env
+OPENAI_API_KEY=your_actual_key_here
+MODEL_NAME=gpt-4o-mini
+CHROMA_DB_PATH=./chroma_db
+LOG_LEVEL=INFO
+```
+
+### 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Application
+```bash
+streamlit run app.py
 ```
 
 ---
 
-## 📝 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📸 Screenshots
+*(Placeholders - Replace with actual images in your repository)*
+
+| Dashboard Overview | AI Research Chat |
+| :---: | :---: |
+| ![Dashboard](https://via.placeholder.com/400x250?text=Dashboard+Overview) | ![Chat](https://via.placeholder.com/400x250?text=AI+Research+Chat) |
 
 ---
-**Developed for the Xamk Master’s Program in Applied AI Engineering.**
+
+## 🔄 Example Workflow
+
+1. **Ingest**: Upload a strategy PDF in the **Knowledge Base**.
+2. **Retrieve**: Ask a complex question in **AI Research Chat** (e.g., *"How should we adapt our Nordic strategy for the Persian market?"*).
+3. **Analyze**: The system retrieves relevant segments and synthesizes a grounded answer with citations.
+4. **Strategize**: Use the **Strategy Studio** to generate a 3-month publishing roadmap based on the retrieved insights.
+5. **Evaluate**: Check the **Evaluation** tab to verify the factual grounding score of the response.
+
+---
+
+## 🛡️ Ethical AI & Responsible Development
+
+- **Hallucination Mitigation**: Every response is cross-referenced with retrieved document chunks to ensure mathematical grounding.
+- **Data Privacy**: Local vector storage (ChromaDB) ensures that institutional knowledge is indexed privately.
+- **Safety Guards**: Integrated detection of adversarial queries and malicious prompt injections.
+
+---
+
+## ⚠️ Limitations & Future Improvements
+
+### Current Limitations
+- **File Size**: Optimal performance with documents under 100MB.
+- **Language Nuance**: While multi-lingual, extremely rare dialects may require fine-tuned embedding models.
+
+### Future Roadmap
+- [ ] **Multi-Modal Support**: Analyzing images and charts within documents.
+- [ ] **Advanced Agentic Reasoning**: Implementing ReAct patterns for iterative research tasks.
+- [ ] **User Auth**: Integrated SSO for enterprise-grade security.
+
+---
+
+## 👨‍💻 Author
+
+**Ehsan [Last Name]**
+*Applied AI Engineering Student*
+[LinkedIn](https://www.linkedin.com/) | [GitHub](https://github.com/animusehsan-sketch) | [Portfolio](https://your-portfolio.com)
+
+---
+*This project was developed as part of the Master’s in Applied AI Engineering curriculum at Xamk.*
