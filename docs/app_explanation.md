@@ -1,68 +1,68 @@
-# پلتفرم هوشمند مدیریت دانش Parsuma AI
-## مستندات تشریحی پروژه (نسخه ارائه)
+# Parsuma AI Knowledge Intelligence Platform
+## Comprehensive Technical Documentation & Project Overview
 
-این سند حاوی توضیحات جامع فنی و کاربردی پلتفرم Parsuma AI است که به عنوان پروژه نهایی واحد "مهندسی هوش مصنوعی کاربردی" (Applied AI Engineering) طراحی و پیاده‌سازی شده است.
-
----
-
-### ۱. پلتفرم Parsuma AI چیست؟
-**Parsuma AI** یک پلتفرم پیشرفته "هوشمندی دانش" (Knowledge Intelligence) است که با بهره‌گیری از تکنولوژی **RAG (Retrieval-Augmented Generation)** و معماری چند-عامله (Multi-Agent)، حجم عظیمی از داده‌های غیرساختاریافته (مانند اسناد PDF و متون فنی) را به دانش قابل جستجو، تحلیل و استخراج تبدیل می‌کند. این سیستم فراتر از یک چت‌بات ساده عمل کرده و به عنوان یک دستیار پژوهشی و استراتژیک هوشمند، دقت پاسخ‌دهی هوش مصنوعی را با استناد به منابع داخلی تضمین می‌کند.
-
-### ۲. حل مسئله در دنیای واقعی
-در دنیای امروز، سازمان‌ها با پدیده "انفجار اطلاعات" مواجه هستند. مشکل اصلی اینجاست که:
-*   مدل‌های زبانی بزرگ (LLM) درباره داده‌های خصوصی و به‌روز سازمان‌ها اطلاعی ندارند.
-*   جستجوی سنتی در فایل‌ها بر اساس کلمات کلیدی، فاقد درک معنایی است.
-*   خطر "توهم" (Hallucination) در هوش مصنوعی باعث می‌شود پاسخ‌های غیردقیق تولید شود.
-
-**Parsuma AI** با ایجاد یک پل ارتباطی بین مدل‌های زبانی پیشرفته (OpenAI) و پایگاه داده‌های برداری (ChromaDB)، این مشکل را حل کرده و به کاربران اجازه می‌دهد بر اساس مستندات واقعی خود، پاسخ‌های مستند و دقیق دریافت کنند.
-
-### ۳. بررسی بخش‌های مختلف اپلیکیشن
-این پلتفرم از ۶ بخش اصلی تشکیل شده است:
-
-*   **داشبورد (Dashboard):** نمای کلی از وضعیت سیستم، تعداد اسناد ایندکس شده و سلامت ارتباط با APIها را نشان می‌دهد.
-*   **پایگاه دانش (Knowledge Base):** مرکز مدیریت اسناد. کاربران می‌توانند فایل‌های خود را بارگذاری کرده و وضعیت پردازش و برداری‌سازی (Vectorization) آن‌ها را مشاهده کنند.
-*   **چت پژوهشی (AI Research Chat):** رابط کاربری اصلی برای تعامل با دانش استخراج شده. در این بخش، هوش مصنوعی با استناد به اسناد بارگذاری شده به سوالات پاسخ می‌دهد.
-*   **استودیو استراتژی (Strategy Studio):** بخشی برای تحلیل‌های پیشرفته‌تر و تولید خروجی‌های استراتژیک (مانند گزارش‌های مقایسه‌ای) بر اساس دانش موجود.
-*   **ارزیابی (Evaluation):** سیستمی برای سنجش دقت پاسخ‌ها، نرخ بازیابی اطلاعات و بررسی کیفیت عملکرد خط لوله RAG.
-*   **مستندات (Documentation):** راهنمای استفاده از سیستم و تشریح معماری فنی برای توسعه‌دهندگان و کاربران ارشد.
-
-### ۴. ارکستراسیون عامل‌ها (Agent Orchestration)
-پلتفرم از یک ساختار چند-لایه‌ای برای مدیریت وظایف استفاده می‌کند:
-
-*   **هوش اسناد (Document Intelligence):** عاملی که وظیفه درک ساختار فایل‌ها، جداسازی بخش‌های مهم و پاک‌سازی داده‌ها را بر عهده دارد.
-*   **بازیابی معنایی (Semantic Retrieval):** عاملی که سوال کاربر را به فضای برداری برده و دقیق‌ترین و مرتبط‌ترین بخش‌های متنی را پیدا می‌کند.
-*   **گارد ایمنی (Safety Guard):** لایه‌ای که پاسخ‌های تولید شده را از نظر اخلاقی، عدم نشت داده‌های حساس و عدم وجود توهم هوش مصنوعی فیلتر می‌کند.
-
-### ۵. خط لوله عصبی ورود داده (Neural Ingestion Pipeline)
-فرآیند تبدیل یک فایل خام به دانش قابل فهم برای هوش مصنوعی طی ۴ مرحله انجام می‌شود:
-
-۱. **Extract (استخراج):** استخراج متن خام از فایل‌های PDF و متنی.
-۲. **Embed (جاسازی):** تبدیل متن به برادارهای ریاضی (Vectors) با استفاده از مدل‌های Embedding هوش مصنوعی.
-۳. **Retrieve (بازیابی):** یافتن بردارهای مشابه با سوال کاربر در پایگاه داده برداری.
-۴. **Synthesize (ترکیب):** ارسال متن‌های بازیابی شده به مدل زبانی (LLM) برای تولید پاسخ نهایی و منسجم.
-
-### ۶. گردش کار RAG به زبان ساده
-روش **RAG** مانند این است که به جای اینکه از یک دانش‌آموز بخواهیم هر چیزی را که در حافظه دارد بگوید (که ممکن است اشتباه کند)، به او یک کتاب مرجع (پایگاه دانش ما) بدهیم و بگوییم: "ابتدا بخش مرتبط را در کتاب پیدا کن و سپس با استفاده از آن، پاسخ سوال را بده." این کار دقت را به ۱۰۰٪ نزدیک می‌کند.
-
-### ۷. یکپارچگی فناوری‌ها (Tech Stack)
-*   **OpenAI API:** به عنوان مغز متفکر برای درک زبان و تولید پاسخ.
-*   **ChromaDB:** به عنوان حافظه بلندمدت برداری برای ذخیره و جستجوی سریع دانش.
-*   **Embeddings:** ابزاری برای تبدیل کلمات به زبان ریاضی (اعداد) جهت درک شباهت‌ها.
-*   **Streamlit:** چارچوبی قدرتمند برای ایجاد رابط کاربری وب سریع، زیبا و تعاملی.
-
-### ۸. چرا این پروژه با نیازمندی‌های مهندسی هوش مصنوعی منطبق است؟
-این پروژه تمامی استانداردهای یک سیستم هوش مصنوعی مدرن را داراست:
-*   استفاده از معماری **Modular Backend**.
-*   پیاده‌سازی کامل سیستم **Vector Database**.
-*   مدیریت حافظه گفتگو و مدیریت Context.
-*   رعایت اصول ایمنی و ارزیابی مدل (AI Evaluation).
-*   رابط کاربری حرفه‌ای و کاربرپسند.
-
-### ۹. محدودیت‌ها و بهبودهای آتی
-**محدودیت‌ها:** وابستگی به اینترنت برای APIهای ابری و هزینه‌های مربوط به توکن‌های پردازش داده.
-**بهبودهای آتی:** پیاده‌سازی مدل‌های محلی (Local LLMs) برای امنیت ۱۰۰ درصدی داده‌ها، پشتیبانی از فرمت‌های تصویری و ویدیویی در پایگاه دانش، و افزودن قابلیت همکاری تیمی در چت‌های پژوهشی.
+This document provides an in-depth technical analysis and functional overview of the **Parsuma AI Platform**, developed as the final project for the "Applied AI Engineering" course.
 
 ---
-**تهیه شده توسط:** تیم توسعه Parsuma AI
-**پروژه نهایی واحد مهندسی هوش مصنوعی کاربردی**
-**می ۲۰۲۶**
+
+### 1. Executive Summary
+**Parsuma AI** is a state-of-the-art Knowledge Intelligence platform designed to transform unstructured organizational data into actionable, searchable, and synthesizable insights. By leveraging **Retrieval-Augmented Generation (RAG)** and a multi-agent orchestration architecture, the platform bridges the gap between static document repositories and dynamic, context-aware AI interactions. It ensures high precision in information retrieval while strictly adhering to safety and grounding protocols.
+
+### 2. Problem Statement & Real-World Utility
+In modern enterprise and academic environments, "Information Silos" present a significant hurdle. Standard Large Language Models (LLMs) suffer from two primary limitations:
+*   **Knowledge Cutoff:** They are unaware of private or real-time organizational data.
+*   **Hallucinations:** They may generate plausible-sounding but factually incorrect information when context is missing.
+
+**Parsuma AI** solves these challenges by grounding the AI's reasoning in a verified **Knowledge Base**. It serves as a secure, intelligent layer that allows users to query complex technical manuals, policy documents, and research papers with near-zero hallucination rates.
+
+### 3. System Architecture & Agent Orchestration
+The platform employs a sophisticated **Multi-Agent Orchestration** model to handle complex tasks:
+
+*   **Document Intelligence Agent:** Responsible for structural analysis of ingested files (PDF, TXT), performing OCR where necessary, and executing metadata extraction for improved filtering.
+*   **Semantic Retrieval Agent:** Manages the interface between user intent and the vector space. It optimizes queries and ensures that the most relevant "contextual chunks" are retrieved from the database.
+*   **Safety Guard Agent:** A critical monitoring layer that evaluates both the retrieved context and the generated response for policy compliance, data privacy, and grounding (ensuring the answer is actually in the source).
+
+### 4. The Neural Ingestion Pipeline
+Data flows through a four-stage **Neural Pipeline** to become "AI-ready":
+
+1.  **Extraction:** Parsing raw text from heterogeneous sources while preserving semantic hierarchy.
+2.  **Embedding:** Converting text segments into high-dimensional numerical vectors using OpenAI's `text-embedding-3-small` or `text-embedding-3-large` models.
+3.  **Indexing:** Storing these vectors in **ChromaDB**, an open-source vector database, optimized for fast similarity searches.
+4.  **Synthesis:** Combining the retrieved context with the user's query to generate a coherent, citation-backed response via the LLM.
+
+### 5. Platform Modules & Dashboard Overview
+The Streamlit-powered interface is divided into six strategic zones:
+
+*   **Executive Dashboard:** Provides high-level metrics on system health, API latency, token usage, and knowledge base statistics.
+*   **Knowledge Base Management:** The central hub for data ingestion. Users can upload documents, trigger re-indexing, and manage the lifecycle of their digital assets.
+*   **AI Research Chat:** A premium chat interface featuring persistent memory, context-aware answering, and source transparency (showing exactly which document part was used).
+*   **Strategy Studio:** An advanced analytical environment for generating comparative reports, SWOT analyses, or executive summaries based on the entire knowledge repository.
+*   **Performance Evaluation:** A dedicated suite for testing RAG quality, measuring metrics like Faithfulness, Answer Relevancy, and Context Precision.
+*   **Technical Documentation:** An integrated guide for system administrators and developers to understand the API structures and deployment configurations.
+
+### 6. Technical Stack & Engineering Decisions
+*   **Engine:** OpenAI **GPT-4o-mini** – Selected for its optimal balance between high-reasoning capabilities and cost-effective token management.
+*   **Vector Storage:** **ChromaDB** – Chosen for its lightweight footprint and efficient integration with Python-based AI workflows.
+*   **Frontend:** **Streamlit** – Utilized to create a "Premium SaaS" aesthetic with dynamic UI elements, ensuring the tool is accessible to non-technical stakeholders.
+*   **Logic:** **Python & LangChain** – The backbone of the application, managing the complex RAG chains and stateful interactions.
+
+### 7. AI Engineering Rationale
+This project aligns with Master's level engineering requirements by implementing:
+*   **Advanced Prompt Engineering:** Utilizing Few-Shot and Chain-of-Thought prompting to improve reasoning.
+*   **Vector Space Optimization:** Implementing recursive character splitting and overlapping strategies to maintain semantic continuity.
+*   **Error Handling & Resiliency:** Robust management of API rate limits and data parsing exceptions.
+
+### 8. Limitations & Future Roadmap
+**Current Limitations:**
+- Dependency on cloud-based LLM providers (Internet requirement).
+- Maximum context window constraints for extremely large document sets.
+
+**Future Improvements:**
+- **Local LLM Integration:** Supporting Ollama or vLLM for 100% on-premise, air-gapped deployments.
+- **Multimodal RAG:** Enabling the platform to "see" and "reason" over images, charts, and tables within documents.
+- **Agentic Workflows:** Allowing the AI to perform external web searches or code execution to verify the knowledge base data.
+
+---
+**Developed by:** Parsuma AI Engineering Team
+**Final Project: Applied AI Engineering**
+**Date:** May 2026
