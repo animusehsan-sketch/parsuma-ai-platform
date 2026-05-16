@@ -58,7 +58,7 @@ def apply_custom_css():
         }
         
         .hero-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
@@ -88,9 +88,41 @@ def apply_custom_css():
         }
         
         .glass-card:hover {
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
-            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), 0 0 10px rgba(168, 85, 247, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Sidebar Branding */
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-subtitle {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 1.5rem 0;
+        }
+
+        /* Footer */
+        .footer-container {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
         }
 
         /* Metric Dashboard Cards */
@@ -228,6 +260,9 @@ def render_metric_card(label: str, value: str, delta: str = None, is_up: bool = 
                 <div class='metric-label'>{label}</div>
                 <div class='metric-value'>{value}</div>
                 {delta_html}
+                <div style='font-size: 0.6rem; color: rgba(148, 163, 184, 0.4); margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;'>
+                    Simulated demo metrics for academic evaluation
+                </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -290,3 +325,12 @@ def create_gauge_plot(value: float, title: str):
         margin=dict(l=30, r=30, t=50, b=10)
     )
     return fig
+
+def render_footer():
+    """Render a subtle professional footer."""
+    st.markdown("""
+        <div class='footer-container'>
+            Built for Applied AI Engineering – Parsuma AI<br>
+            <span style='opacity: 0.6;'>© 2026 Parsuma Knowledge Systems</span>
+        </div>
+    """, unsafe_allow_html=True)

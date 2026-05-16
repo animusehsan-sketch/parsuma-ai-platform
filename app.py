@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 try:
     from src.ui_components import (
         apply_custom_css, render_hero, render_metric_card, 
-        render_chat_bubble, create_gauge_plot
+        render_chat_bubble, create_gauge_plot, render_footer
     )
     from src.retriever import VectorStore, RetrievalAgent
     from src.rag_pipeline import RAGPipeline
@@ -25,8 +25,8 @@ except ImportError:
 
 # --- CONFIGURATION ---
 st.set_page_config(
-    page_title="Parsuma AI | Intelligence Platform",
-    page_icon="✨",
+    page_title="Parsuma AI | Knowledge Intelligence Platform",
+    page_icon="assets/parsuma_logo.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -66,12 +66,10 @@ apply_custom_css()
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.markdown("""
-        <div style='padding: 20px 0;'>
-            <h1 style='color: white; margin-bottom: 0; font-size: 1.8rem;'>PARSUMA<span style='color: #6366f1;'>AI</span></h1>
-            <p style='color: #94a3b8; font-size: 0.8rem; letter-spacing: 1px;'>KNOWLEDGE INTELLIGENCE</p>
-        </div>
-    """, unsafe_allow_html=True)
+    # Branding Section
+    st.image("assets/parsuma_logo.png", use_container_width=True)
+    st.markdown("<div class='sidebar-subtitle'>AI Knowledge Intelligence Platform</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sidebar-divider'></div>", unsafe_allow_html=True)
     
     st.markdown("---")
     page = st.radio(
@@ -111,7 +109,7 @@ with st.sidebar:
 
 # --- DASHBOARD PAGE ---
 if page == "Dashboard":
-    render_hero("Knowledge Dashboard", "Real-time institutional intelligence and agentic telemetry.")
+    render_hero("Parsuma AI Knowledge Intelligence Platform", "Real-time retrieval, reasoning, and institutional intelligence.")
     
     m1, m2, m3, m4 = st.columns(4)
     with m1: render_metric_card("Total Inquiries", "1,284", "12%", True)
@@ -144,6 +142,7 @@ if page == "Dashboard":
             </div>
         </div>
     """, unsafe_allow_html=True)
+    render_footer()
 
 # --- KNOWLEDGE BASE ---
 elif page == "Knowledge Base":
@@ -161,6 +160,7 @@ elif page == "Knowledge Base":
                 s.update(label="Index Synchronized", state="complete")
             st.toast("Intelligence updated.")
     st.markdown("</div>", unsafe_allow_html=True)
+    render_footer()
 
     st.markdown("### Managed Assets")
     st.dataframe(pd.DataFrame({
@@ -194,6 +194,7 @@ elif page == "AI Research Chat":
             
             st.session_state.chat_history.append({"role": "assistant", "content": ans, "sources": src, "confidence": conf})
             render_chat_bubble("assistant", ans, src, conf)
+    render_footer()
 
 # --- STRATEGY STUDIO ---
 elif page == "Strategy Studio":
@@ -220,6 +221,7 @@ elif page == "Strategy Studio":
             st.markdown("</div>", unsafe_allow_html=True)
         else:
             st.info("Awaiting synthesis parameters...")
+    render_footer()
 
 # --- EVALUATION ---
 elif page == "Evaluation":
@@ -244,6 +246,7 @@ elif page == "Evaluation":
     st.text(f"[{datetime.now().strftime('%H:%M:%S')}] SUCCESS: Knowledge Index Synchronized.")
     st.text(f"[{datetime.now().strftime('%H:%M:%S')}] MONITOR: Safety Guard active.")
     st.markdown("</div>", unsafe_allow_html=True)
+    render_footer()
 
 # --- DOCUMENTATION ---
 elif page == "Documentation":
@@ -263,7 +266,7 @@ elif page == "Documentation":
                     <p style='font-size: 0.85rem; color: #94a3b8; margin-top: 10px;'>OpenAI GPT-4 Turbo orchestrates context synthesis and strategic campaign roadmaps.</p>
                 </div>
             </div>
-            <h3 style='margin-top: 40px;'>Ethics & Responsibility</h3>
             <p style='color: #94a3b8;'>Layered safety agents ensure that every generated insight is grounded in source data, minimizing hallucination risks and ensuring intercultural sensitivity.</p>
         </div>
     """, unsafe_allow_html=True)
+    render_footer()
