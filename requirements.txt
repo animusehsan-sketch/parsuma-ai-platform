@@ -11,3 +11,4 @@ requests
 numpy
 pydantic
 torch
+protobuf==3.20.3
