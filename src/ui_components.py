@@ -27,6 +27,22 @@ def apply_custom_css():
             font-family: 'Inter', sans-serif;
         }
 
+        /* Adjust main container padding for cloud deployment */
+        .block-container {
+            padding-top: 5rem !important;
+            padding-bottom: 5rem !important;
+            padding-left: 5rem !important;
+            padding-right: 5rem !important;
+        }
+
+        @media (max-width: 768px) {
+            .block-container {
+                padding-top: 3rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
         /* Sidebar Customization */
         [data-testid="stSidebar"] {
             background-color: rgba(2, 6, 23, 0.95);
@@ -192,7 +208,7 @@ def apply_custom_css():
 def render_hero(title: str, subtitle: str):
     """Render the ultra-premium hero section."""
     st.markdown(f"""
-        <div style='margin-top: 2rem; margin-bottom: 4rem;'>
+        <div style='margin-top: 1rem; margin-bottom: 4rem;'>
             <div class='hero-title'>{title}</div>
             <div class='hero-subtitle'>{subtitle}</div>
         </div>
