@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import time
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 from datetime import datetime
@@ -24,9 +25,13 @@ except ImportError:
     SRC_AVAILABLE = False
 
 # --- CONFIGURATION ---
+# --- LOGO PATH CHECK ---
+LOGO_PATH = Path("assets/parsuma_logo.png")
+LOGO_EXISTS = LOGO_PATH.exists()
+
 st.set_page_config(
     page_title="Parsuma AI | Knowledge Intelligence Platform",
-    page_icon="assets/parsuma_logo.png",
+    page_icon=str(LOGO_PATH) if LOGO_EXISTS else "✨",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -67,7 +72,15 @@ apply_custom_css()
 # --- SIDEBAR ---
 with st.sidebar:
     # Branding Section
-    st.image("assets/parsuma_logo.png", use_container_width=True)
+    if LOGO_EXISTS:
+        st.image(str(LOGO_PATH), use_container_width=True)
+    else:
+        st.markdown("""
+            <div style='padding: 10px 0;'>
+                <h1 style='color: white; margin-bottom: 0; font-size: 1.8rem;'>PARSUMA<span style='color: #6366f1;'>AI</span></h1>
+            </div>
+        """, unsafe_allow_html=True)
+        
     st.markdown("<div class='sidebar-subtitle'>AI Knowledge Intelligence Platform</div>", unsafe_allow_html=True)
     st.markdown("<div class='sidebar-divider'></div>", unsafe_allow_html=True)
     
