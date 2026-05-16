@@ -21,8 +21,24 @@ try:
     from src.safety import SafetyGuard
     from src.utils import ensure_dirs
     SRC_AVAILABLE = True
-except ImportError:
+except ImportError as e:
     SRC_AVAILABLE = False
+    IMPORT_ERROR = str(e)
+
+# Fallback components if src is unavailable
+if not SRC_AVAILABLE:
+    def apply_custom_css(): pass
+    def render_hero(t, s): st.title(t); st.write(s)
+    def render_metric_card(l, v, d=None, p=True): st.metric(l, v, d)
+    def render_chat_bubble(r, c, s=None, conf=None): st.write(f"{r}: {c}")
+    def create_gauge_plot(v, t): return None
+    def render_footer():
+        st.markdown("<div style='text-align: center; padding: 20px; color: #94a3b8; font-size: 0.8rem;'>Built for Applied AI Engineering – Parsuma AI</div>", unsafe_allow_html=True)
+else:
+    # Ensure render_footer is defined even if not imported (extra safety)
+    if 'render_footer' not in locals() and 'render_footer' not in globals():
+        def render_footer():
+            st.markdown("<div style='text-align: center; padding: 20px; color: #94a3b8; font-size: 0.8rem;'>Built for Applied AI Engineering – Parsuma AI</div>", unsafe_allow_html=True)
 
 # --- CONFIGURATION ---
 # --- LOGO PATH CHECK ---
