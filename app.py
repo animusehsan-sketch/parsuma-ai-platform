@@ -34,7 +34,7 @@ except ImportError as e:
 # Fallback components if src is unavailable
 if not UI_AVAILABLE:
     def apply_custom_css(): pass
-    def render_hero(t, s, w=None): st.title(t); st.write(s)
+    def render_hero(t, s): st.title(t); st.write(s)
     def render_metric_card(l, v, d=None, p=True, i=None, c=None): st.metric(l, v, d)
     def render_chat_bubble(r, c, s=None, conf=None): st.write(f"{r}: {c}")
     def create_gauge_plot(v, t): return None
@@ -154,7 +154,8 @@ with st.sidebar:
 
 # --- DASHBOARD PAGE ---
 if page == "Dashboard":
-    render_hero("Parsuma AI Knowledge Intelligence Platform", "Real-time retrieval, reasoning, and institutional intelligence.", "Welcome back, Parsuma 👋")
+    st.markdown("<div style='font-size: 0.9rem; color: #a855f7; font-weight: 600; letter-spacing: 0.05em; margin-bottom: -1rem; position: relative; z-index: 10;'>Welcome back, Parsuma 👋</div>", unsafe_allow_html=True)
+    render_hero("Parsuma AI Knowledge Intelligence Platform", "Real-time retrieval, reasoning, and institutional intelligence.")
     
     m1, m2, m3, m4 = st.columns(4)
     with m1: render_metric_card("Total Inquiries", "1,284", "12%", True, "💬", "#3b82f6")

@@ -308,15 +308,13 @@ def apply_custom_css():
         </style>
     """, unsafe_allow_html=True)
 
-def render_hero(title: str, subtitle: str, welcome_text: str = None):
+def render_hero(title: str, subtitle: str):
     """Render the ultra-premium hero section."""
     title_html = title.replace("AI", "<span style='background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>AI</span>")
-    welcome_html = f"<div style='font-size: 0.9rem; color: #a855f7; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.5rem;'>{welcome_text}</div>" if welcome_text else ""
     
     st.markdown(f"""
         <div style='margin-top: 1rem; margin-bottom: 4rem; position: relative;'>
             <div style='position: absolute; top: -50px; left: -50px; width: 100%; height: 200%; background: radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.15) 0%, transparent 70%); filter: blur(50px); z-index: -1; pointer-events: none;'></div>
-            {welcome_html}
             <div class='hero-title'>{title_html}</div>
             <div class='hero-subtitle'>{subtitle}</div>
         </div>
