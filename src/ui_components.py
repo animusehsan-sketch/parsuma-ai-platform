@@ -22,7 +22,11 @@ def apply_custom_css():
         }
 
         .stApp {
-            background: radial-gradient(circle at top right, #1e1b4b, #020617 40%);
+            background-color: #020617;
+            background-image: 
+                radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 95% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
+                linear-gradient(to right, transparent 40%, rgba(15, 23, 42, 0.4) 100%);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
         }
@@ -45,9 +49,10 @@ def apply_custom_css():
 
         /* Sidebar Customization */
         [data-testid="stSidebar"] {
-            background-color: rgba(2, 6, 23, 0.95);
-            border-right: 1px solid var(--border);
+            background-color: rgba(2, 6, 23, 0.98);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
         }
         
         /* Typography */
@@ -83,7 +88,7 @@ def apply_custom_css():
             padding: 2rem;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(16px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.03), 0 0 30px rgba(168, 85, 247, 0.02);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
