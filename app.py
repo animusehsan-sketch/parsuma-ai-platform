@@ -34,8 +34,8 @@ except ImportError as e:
 # Fallback components if src is unavailable
 if not UI_AVAILABLE:
     def apply_custom_css(): pass
-    def render_hero(t, s): st.title(t); st.write(s)
-    def render_metric_card(l, v, d=None, p=True): st.metric(l, v, d)
+    def render_hero(t, s, w=None): st.title(t); st.write(s)
+    def render_metric_card(l, v, d=None, p=True, i=None, c=None): st.metric(l, v, d)
     def render_chat_bubble(r, c, s=None, conf=None): st.write(f"{r}: {c}")
     def create_gauge_plot(v, t): return None
     def render_footer():
@@ -107,12 +107,22 @@ with st.sidebar:
     st.markdown("<div class='sidebar-divider'></div>", unsafe_allow_html=True)
     
     st.markdown("---")
-    page = st.radio(
+    page_options = {
+        "📊 Dashboard": "Dashboard",
+        "📚 Knowledge Base": "Knowledge Base",
+        "💬 AI Research Chat": "AI Research Chat",
+        "🎯 Strategy Studio": "Strategy Studio",
+        "📈 Evaluation": "Evaluation",
+        "📖 Documentation": "Documentation"
+    }
+    
+    selected_option = st.radio(
         "NAVIGATION",
-        ["Dashboard", "Knowledge Base", "AI Research Chat", "Strategy Studio", "Evaluation", "Documentation"],
+        list(page_options.keys()),
         index=0,
         label_visibility="collapsed"
     )
+    page = page_options[selected_option]
     
     st.markdown("---")
     st.markdown("### Agent Orchestration")
@@ -144,36 +154,36 @@ with st.sidebar:
 
 # --- DASHBOARD PAGE ---
 if page == "Dashboard":
-    render_hero("Parsuma AI Knowledge Intelligence Platform", "Real-time retrieval, reasoning, and institutional intelligence.")
+    render_hero("Parsuma AI Knowledge Intelligence Platform", "Real-time retrieval, reasoning, and institutional intelligence.", "Welcome back, Parsuma 👋")
     
     m1, m2, m3, m4 = st.columns(4)
-    with m1: render_metric_card("Total Inquiries", "1,284", "12%", True)
-    with m2: render_metric_card("Factual Grounding", "98.2%", "2.1%", True)
-    with m3: render_metric_card("Indexed Assets", "42", "Live", True)
-    with m4: render_metric_card("Anomaly Rate", "0.02%", "Low", True)
+    with m1: render_metric_card("Total Inquiries", "1,284", "12%", True, "💬", "#3b82f6")
+    with m2: render_metric_card("Factual Grounding", "98.2%", "2.1%", True, "🛡️", "#10b981")
+    with m3: render_metric_card("Indexed Assets", "42", "Live", True, "📂", "#8b5cf6")
+    with m4: render_metric_card("Anomaly Rate", "0.02%", "Low", True, "〰️", "#f43f5e")
 
     st.markdown("### Neural Ingestion Pipeline")
     st.markdown("""
-        <div style='display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;'>
-            <div class='glass-card' style='text-align: center; border-bottom: 4px solid #6366f1;'>
-                <div style='font-size: 2.5rem; margin-bottom: 10px;'>📥</div>
-                <div style='font-weight: 700; font-family: Outfit;'>EXTRACT</div>
-                <div style='font-size: 0.8rem; color: #94a3b8;'>Multi-format parsing</div>
+        <div class='pipeline-grid' style='display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px; position: relative;'>
+            <div class='glass-card pipeline-card' style='text-align: center; border-top: 4px solid #3b82f6;'>
+                <div class='pipeline-icon' style='background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); box-shadow: 0 0 20px rgba(59,130,246,0.2);'>📥</div>
+                <div class='pipeline-title'>EXTRACT</div>
+                <div class='pipeline-subtitle'>Multi-format parsing</div>
             </div>
-            <div class='glass-card' style='text-align: center; border-bottom: 4px solid #a855f7;'>
-                <div style='font-size: 2.5rem; margin-bottom: 10px;'>🧬</div>
-                <div style='font-weight: 700; font-family: Outfit;'>EMBED</div>
-                <div style='font-size: 0.8rem; color: #94a3b8;'>Vector mapping</div>
+            <div class='glass-card pipeline-card' style='text-align: center; border-top: 4px solid #8b5cf6;'>
+                <div class='pipeline-icon' style='background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); box-shadow: 0 0 20px rgba(139,92,246,0.2);'>🧬</div>
+                <div class='pipeline-title'>EMBED</div>
+                <div class='pipeline-subtitle'>Vector mapping</div>
             </div>
-            <div class='glass-card' style='text-align: center; border-bottom: 4px solid #6366f1;'>
-                <div style='font-size: 2.5rem; margin-bottom: 10px;'>🔍</div>
-                <div style='font-weight: 700; font-family: Outfit;'>RETRIEVE</div>
-                <div style='font-size: 0.8rem; color: #94a3b8;'>Semantic search</div>
+            <div class='glass-card pipeline-card' style='text-align: center; border-top: 4px solid #06b6d4;'>
+                <div class='pipeline-icon' style='background: rgba(6,182,212,0.15); border: 1px solid rgba(6,182,212,0.3); box-shadow: 0 0 20px rgba(6,182,212,0.2);'>🔍</div>
+                <div class='pipeline-title'>RETRIEVE</div>
+                <div class='pipeline-subtitle'>Semantic search</div>
             </div>
-            <div class='glass-card' style='text-align: center; border-bottom: 4px solid #a855f7;'>
-                <div style='font-size: 2.5rem; margin-bottom: 10px;'>🧠</div>
-                <div style='font-weight: 700; font-family: Outfit;'>SYNTHESIZE</div>
-                <div style='font-size: 0.8rem; color: #94a3b8;'>LLM Reasoning</div>
+            <div class='glass-card pipeline-card' style='text-align: center; border-top: 4px solid #ec4899;'>
+                <div class='pipeline-icon' style='background: rgba(236,72,153,0.15); border: 1px solid rgba(236,72,153,0.3); box-shadow: 0 0 20px rgba(236,72,153,0.2);'>🧠</div>
+                <div class='pipeline-title'>SYNTHESIZE</div>
+                <div class='pipeline-subtitle'>LLM Reasoning</div>
             </div>
         </div>
     """, unsafe_allow_html=True)

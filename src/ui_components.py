@@ -11,19 +11,19 @@ def apply_custom_css():
         :root {
             --primary: #6366f1;
             --primary-glow: rgba(99, 102, 241, 0.5);
-            --secondary: #a855f7;
-            --secondary-glow: rgba(168, 85, 247, 0.4);
-            --bg-dark: #020617;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --border: rgba(255, 255, 255, 0.08);
+            --secondary: #8b5cf6;
+            --secondary-glow: rgba(139, 92, 246, 0.4);
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --border: rgba(255, 255, 255, 0.12);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --text-muted: #cbd5e1;
+            --accent-glow: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
         }
 
         .stApp, [data-testid="stAppViewContainer"] {
-            background: radial-gradient(circle at top right, rgba(120,90,255,0.18) 0%, rgba(50,80,255,0.12) 20%, rgba(10,20,60,0.08) 40%, #030712 70%) !important;
-            background-color: #030712 !important;
+            background: radial-gradient(ellipse at right 20%, rgba(139, 92, 246, 0.15) 0%, rgba(59, 130, 246, 0.1) 40%, #0f172a 80%) !important;
+            background-color: #0f172a !important;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
         }
@@ -32,13 +32,11 @@ def apply_custom_css():
             background: transparent !important;
         }
 
-        /* Adjust main container padding for cloud deployment */
         .block-container {
             padding-top: 5rem !important;
             padding-bottom: 5rem !important;
             padding-left: 5rem !important;
             padding-right: 5rem !important;
-            background: radial-gradient(circle at center, rgba(120,90,255,0.03) 0%, transparent 100%);
         }
 
         @media (max-width: 768px) {
@@ -51,10 +49,10 @@ def apply_custom_css():
 
         /* Sidebar Customization */
         [data-testid="stSidebar"] {
-            background-color: rgba(2, 6, 23, 0.98);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: rgba(15, 23, 42, 0.95);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
         }
         
         /* Typography */
@@ -67,7 +65,7 @@ def apply_custom_css():
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
@@ -84,20 +82,31 @@ def apply_custom_css():
 
         /* Premium Glass Card */
         .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             padding: 2rem;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(16px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(120, 90, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .glass-card:hover {
-            border-color: rgba(120, 90, 255, 0.4);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(120, 90, 255, 0.15);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(139, 92, 246, 0.15);
             transform: translateY(-5px);
+        }
+
+        .metric-glass {
+            background: rgba(30, 41, 59, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.1);
+        }
+        
+        .metric-glass:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(139, 92, 246, 0.25);
+            border-color: rgba(139, 92, 246, 0.5);
         }
 
         /* Sidebar Branding */
@@ -110,54 +119,109 @@ def apply_custom_css():
         
         .sidebar-subtitle {
             text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: #cbd5e1;
             font-weight: 500;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
             margin-bottom: 2rem;
         }
 
         .sidebar-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
             margin: 1.5rem 0;
         }
 
-        /* Footer */
-        .footer-container {
-            text-align: center;
-            padding: 4rem 2rem 2rem;
-            color: var(--text-muted);
-            font-size: 0.8rem;
+        /* Radio Navigation */
+        div[data-testid="stRadio"] div[role="radiogroup"] {
+            gap: 0.5rem;
+        }
+        div[data-testid="stRadio"] label {
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        div[data-testid="stRadio"] label:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        /* Custom highlight for active radio, trying to target checked without breaking Streamlit */
+        div[data-testid="stRadio"] label[data-checked="true"], 
+        div[data-testid="stRadio"] label:has(input:checked) {
+            background: linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.3) 100%) !important;
+            border-left: 4px solid #8b5cf6;
+        }
+
+        /* Pipeline Cards */
+        .pipeline-card {
+            padding: 2.5rem 1.5rem;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 2;
+        }
+        .pipeline-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .pipeline-card:hover .pipeline-icon {
+            transform: scale(1.15);
+        }
+        .pipeline-title {
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-main);
             letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .pipeline-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 1024px) {
+            .pipeline-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 640px) {
+            .pipeline-grid { grid-template-columns: 1fr !important; }
         }
 
         /* Metric Dashboard Cards */
         .metric-card {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
         }
         
         .metric-label {
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
         }
         
         .metric-value {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             font-family: 'Outfit', sans-serif;
-            background: linear-gradient(90deg, #fff, #94a3b8);
+            background: linear-gradient(90deg, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .metric-delta {
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -244,31 +308,44 @@ def apply_custom_css():
         </style>
     """, unsafe_allow_html=True)
 
-def render_hero(title: str, subtitle: str):
+def render_hero(title: str, subtitle: str, welcome_text: str = None):
     """Render the ultra-premium hero section."""
+    title_html = title.replace("AI", "<span style='background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>AI</span>")
+    welcome_html = f"<div style='font-size: 0.9rem; color: #a855f7; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.5rem;'>{welcome_text}</div>" if welcome_text else ""
+    
     st.markdown(f"""
         <div style='margin-top: 1rem; margin-bottom: 4rem; position: relative;'>
-            <div style='position: absolute; top: -50px; left: 0; width: 60%; height: 200%; background: radial-gradient(ellipse at left, rgba(120,90,255,0.12) 0%, transparent 60%); filter: blur(40px); z-index: -1; pointer-events: none;'></div>
-            <div class='hero-title'>{title}</div>
+            <div style='position: absolute; top: -50px; left: -50px; width: 100%; height: 200%; background: radial-gradient(ellipse at top left, rgba(139, 92, 246, 0.15) 0%, transparent 70%); filter: blur(50px); z-index: -1; pointer-events: none;'></div>
+            {welcome_html}
+            <div class='hero-title'>{title_html}</div>
             <div class='hero-subtitle'>{subtitle}</div>
         </div>
     """, unsafe_allow_html=True)
 
-def render_metric_card(label: str, value: str, delta: str = None, is_up: bool = True):
-    """Render a modern dashboard metric card."""
+def render_metric_card(label: str, value: str, delta: str = None, is_up: bool = True, icon: str = "📊", icon_color: str = "#6366f1"):
+    """Render a modern dashboard metric card with a colored circular badge."""
     delta_html = ""
     if delta:
         cls = "delta-up" if is_up else "delta-down"
-        icon = "↑" if is_up else "↓"
-        delta_html = f"<div class='metric-delta {cls}'>{icon} {delta}</div>"
+        icon_delta = "↑" if is_up else "↓"
+        if delta in ["Live", "Low"]:
+            icon_delta = ""
+        delta_html = f"<div class='metric-delta {cls}'>{icon_delta} {delta}</div>"
         
     st.markdown(f"""
-        <div class='glass-card'>
-            <div class='metric-card'>
+        <div class='glass-card metric-glass'>
+            <div class='metric-header' style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;'>
                 <div class='metric-label'>{label}</div>
-                <div class='metric-value'>{value}</div>
-                {delta_html}
-                <div style='font-size: 0.6rem; color: rgba(148, 163, 184, 0.4); margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;'>
+                <div style='background: {icon_color}20; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; border: 1px solid {icon_color}40; box-shadow: 0 0 15px {icon_color}30;'>
+                    {icon}
+                </div>
+            </div>
+            <div class='metric-card'>
+                <div style='display: flex; align-items: baseline; gap: 12px;'>
+                    <div class='metric-value'>{value}</div>
+                    {delta_html}
+                </div>
+                <div style='font-size: 0.65rem; color: rgba(148, 163, 184, 0.5); margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;'>
                     Simulated demo metrics for academic evaluation
                 </div>
             </div>
@@ -337,7 +414,7 @@ def create_gauge_plot(value: float, title: str):
 def render_footer():
     """Render a subtle professional footer."""
     st.markdown("""
-        <div class='footer-container'>
+        <div class='footer-container' style='text-align: center; padding: 3rem 2rem; color: rgba(148, 163, 184, 0.6); font-size: 0.85rem; letter-spacing: 0.05em;'>
             Built for Applied AI Engineering – Parsuma AI<br>
             <span style='opacity: 0.6;'>© 2026 Parsuma Knowledge Systems</span>
         </div>
