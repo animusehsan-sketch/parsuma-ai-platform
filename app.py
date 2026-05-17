@@ -106,7 +106,8 @@ with st.sidebar:
     st.markdown("<div class='sidebar-subtitle'>AI Knowledge Intelligence Platform</div>", unsafe_allow_html=True)
     st.markdown("<div class='sidebar-divider'></div>", unsafe_allow_html=True)
     
-    st.markdown("---")
+    st.markdown("<div class='sidebar-section-title'>Navigation</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sidebar-divider-glow'></div>", unsafe_allow_html=True)
     page_options = {
         "📊 Dashboard": "Dashboard",
         "📚 Knowledge Base": "Knowledge Base",
@@ -124,26 +125,36 @@ with st.sidebar:
     )
     page = page_options[selected_option]
     
-    st.markdown("---")
-    st.markdown("### Agent Orchestration")
+    st.markdown("<div class='sidebar-section-title'>Agent Orchestration</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sidebar-divider-glow'></div>", unsafe_allow_html=True)
     st.markdown("""
-        <div style='font-size: 0.8rem; color: #94a3b8;'>
-            <div style='display: flex; justify-content: space-between; margin-bottom: 5px;'>
+        <div style='font-size: 0.85rem; color: #eaf2ff; font-weight: 500; display: flex; flex-direction: column; gap: 8px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 8px;'>
                 <span>Doc Intelligence</span>
-                <span style='color: #10b981;'>● Active</span>
+                <span style='color: #10b981; font-weight: 600; text-shadow: 0 0 8px rgba(16,185,129,0.5); display: flex; align-items: center; gap: 6px;'>
+                    <span style='display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;'></span>
+                    Active
+                </span>
             </div>
-            <div style='display: flex; justify-content: space-between; margin-bottom: 5px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 8px;'>
                 <span>Semantic Retrieval</span>
-                <span style='color: #10b981;'>● Active</span>
+                <span style='color: #10b981; font-weight: 600; text-shadow: 0 0 8px rgba(16,185,129,0.5); display: flex; align-items: center; gap: 6px;'>
+                    <span style='display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;'></span>
+                    Active
+                </span>
             </div>
-            <div style='display: flex; justify-content: space-between; margin-bottom: 5px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 8px;'>
                 <span>Safety Guard</span>
-                <span style='color: #6366f1;'>● Monitoring</span>
+                <span style='color: #8b5cf6; font-weight: 600; text-shadow: 0 0 8px rgba(139,92,246,0.5); display: flex; align-items: center; gap: 6px;'>
+                    <span style='display: inline-block; width: 6px; height: 6px; background: #8b5cf6; border-radius: 50%; box-shadow: 0 0 8px #8b5cf6;'></span>
+                    Monitoring
+                </span>
             </div>
         </div>
     """, unsafe_allow_html=True)
     
-    st.markdown("---")
+    st.markdown("<div class='sidebar-section-title'>System Settings</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sidebar-divider-glow'></div>", unsafe_allow_html=True)
     if not st.session_state.api_key_configured:
         st.warning("Demo Mode: Provide OpenAI Key")
         key = st.text_input("API Key", type="password")

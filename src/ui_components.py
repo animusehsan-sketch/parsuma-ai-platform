@@ -134,23 +134,65 @@ def apply_custom_css():
 
         /* Radio Navigation */
         div[data-testid="stRadio"] div[role="radiogroup"] {
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
         div[data-testid="stRadio"] label {
             background: rgba(255,255,255,0.02);
             border-radius: 12px;
-            padding: 0.5rem 1rem;
-            transition: all 0.2s;
+            padding: 0.6rem 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            border: 1px solid transparent;
+        }
+        div[data-testid="stRadio"] label p {
+            color: rgba(234, 242, 255, 0.85) !important;
+            font-weight: 600 !important;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
         div[data-testid="stRadio"] label:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
         }
-        /* Custom highlight for active radio, trying to target checked without breaking Streamlit */
+        div[data-testid="stRadio"] label:hover p {
+            color: #ffffff !important;
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
+        }
+        
+        /* Custom highlight for active radio */
         div[data-testid="stRadio"] label[data-checked="true"], 
         div[data-testid="stRadio"] label:has(input:checked) {
             background: linear-gradient(135deg, rgba(59,130,246,0.3) 0%, rgba(139,92,246,0.3) 100%) !important;
-            border-left: 4px solid #8b5cf6;
+            border-left: 4px solid #8b5cf6 !important;
+            border-top: 1px solid rgba(139,92,246,0.2) !important;
+            border-right: 1px solid rgba(139,92,246,0.2) !important;
+            border-bottom: 1px solid rgba(139,92,246,0.2) !important;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.25), inset 0 0 10px rgba(59,130,246,0.15) !important;
+        }
+        div[data-testid="stRadio"] label[data-checked="true"] p, 
+        div[data-testid="stRadio"] label:has(input:checked) p {
+            color: #ffffff !important;
+            text-shadow: 0 0 12px rgba(255,255,255,0.6), 0 0 20px rgba(139,92,246,0.5) !important;
+        }
+
+        /* Sidebar Custom Elements */
+        .sidebar-section-title {
+            font-size: 0.75rem;
+            color: #eaf2ff;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .sidebar-divider-glow {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(139,92,246,0.5), transparent);
+            box-shadow: 0 0 8px rgba(139,92,246,0.4);
+            margin-bottom: 1rem;
         }
 
         /* Pipeline Cards */
