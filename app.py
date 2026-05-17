@@ -13,6 +13,12 @@ try:
         apply_custom_css, render_hero, render_metric_card, 
         render_chat_bubble, create_gauge_plot, render_footer
     )
+    UI_AVAILABLE = True
+except ImportError as e:
+    UI_AVAILABLE = False
+    UI_IMPORT_ERROR = str(e)
+
+try:
     from src.retriever import VectorStore, RetrievalAgent
     from src.rag_pipeline import RAGPipeline
     from src.agents import DocumentIntelligenceAgent, ContentStrategyAgent, SafetyAgent
@@ -26,7 +32,7 @@ except ImportError as e:
     IMPORT_ERROR = str(e)
 
 # Fallback components if src is unavailable
-if not SRC_AVAILABLE:
+if not UI_AVAILABLE:
     def apply_custom_css(): pass
     def render_hero(t, s): st.title(t); st.write(s)
     def render_metric_card(l, v, d=None, p=True): st.metric(l, v, d)
