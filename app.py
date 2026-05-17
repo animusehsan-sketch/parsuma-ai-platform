@@ -48,12 +48,11 @@ else:
 
 # --- CONFIGURATION ---
 # --- LOGO PATH CHECK ---
-LOGO_PATH = Path("assets/parsuma_logo.png")
-LOGO_EXISTS = LOGO_PATH.exists()
+# Logo integration removed for clean branding
 
 st.set_page_config(
     page_title="Parsuma AI | Knowledge Intelligence Platform",
-    page_icon=str(LOGO_PATH) if LOGO_EXISTS else "✨",
+    page_icon="✨",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -94,36 +93,8 @@ apply_custom_css()
 # --- SIDEBAR ---
 with st.sidebar:
     # Branding Section
-    logo_html = ""
-    if LOGO_EXISTS:
-        try:
-            import base64
-            with open(LOGO_PATH, "rb") as img_file:
-                b64_img = base64.b64encode(img_file.read()).decode()
-            logo_html = f"""
-                <div style='display: flex; justify-content: center; margin-bottom: 1.2rem;'>
-                    <div style='
-                        width: 100px; 
-                        height: 100px; 
-                        border-radius: 50%; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        background-color: rgba(255,255,255,0.02);
-                        box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.15);
-                        border: 2px solid rgba(212, 175, 55, 0.4);
-                        overflow: hidden;
-                    '>
-                        <img src="data:image/png;base64,{b64_img}" style='width: 85%; height: 85%; object-fit: contain;' />
-                    </div>
-                </div>
-            """
-        except Exception:
-            pass
-
-    st.markdown(f"""
+    st.markdown("""
         <div style='padding: 10px 0; text-align: center;'>
-            {logo_html}
             <h1 style='color: white; margin-bottom: 0; font-size: 1.8rem; letter-spacing: 0.05em;'>PARSUMA<span style='color: #6366f1;'>AI</span></h1>
         </div>
     """, unsafe_allow_html=True)
