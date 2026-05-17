@@ -21,14 +21,15 @@ def apply_custom_css():
             --accent-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
 
-        .stApp {
-            background-color: #020617;
-            background-image: 
-                radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 95% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 45%),
-                linear-gradient(to right, transparent 40%, rgba(15, 23, 42, 0.4) 100%);
+        .stApp, [data-testid="stAppViewContainer"] {
+            background: radial-gradient(circle at top right, rgba(120,90,255,0.18) 0%, rgba(50,80,255,0.12) 20%, rgba(10,20,60,0.08) 40%, #030712 70%) !important;
+            background-color: #030712 !important;
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
+        }
+        
+        [data-testid="stHeader"] {
+            background: transparent !important;
         }
 
         /* Adjust main container padding for cloud deployment */
@@ -37,6 +38,7 @@ def apply_custom_css():
             padding-bottom: 5rem !important;
             padding-left: 5rem !important;
             padding-right: 5rem !important;
+            background: radial-gradient(circle at center, rgba(120,90,255,0.03) 0%, transparent 100%);
         }
 
         @media (max-width: 768px) {
@@ -82,19 +84,19 @@ def apply_custom_css():
 
         /* Premium Glass Card */
         .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 2rem;
             margin-bottom: 1.5rem;
             backdrop-filter: blur(16px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.03), 0 0 30px rgba(168, 85, 247, 0.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(120, 90, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .glass-card:hover {
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), 0 0 10px rgba(168, 85, 247, 0.1);
+            border-color: rgba(120, 90, 255, 0.4);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(120, 90, 255, 0.15);
             transform: translateY(-5px);
         }
 
@@ -245,7 +247,8 @@ def apply_custom_css():
 def render_hero(title: str, subtitle: str):
     """Render the ultra-premium hero section."""
     st.markdown(f"""
-        <div style='margin-top: 1rem; margin-bottom: 4rem;'>
+        <div style='margin-top: 1rem; margin-bottom: 4rem; position: relative;'>
+            <div style='position: absolute; top: -50px; left: 0; width: 60%; height: 200%; background: radial-gradient(ellipse at left, rgba(120,90,255,0.12) 0%, transparent 60%); filter: blur(40px); z-index: -1; pointer-events: none;'></div>
             <div class='hero-title'>{title}</div>
             <div class='hero-subtitle'>{subtitle}</div>
         </div>
